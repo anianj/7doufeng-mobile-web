@@ -1,0 +1,1 @@
+define("saber-firework/Model",["require","saber-lang/inherits","saber-promise","./Abstract"],function(require){function e(e){r.call(this,e),this.init()}var t=require("saber-lang/inherits"),n=require("saber-promise"),r=require("./Abstract");return t(e,r),e.prototype.fetch=function(e){return n.resolved(e)},e.prototype.refetch=function(e){return n.resolved(e)},e});

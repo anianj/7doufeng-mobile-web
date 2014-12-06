@@ -1,0 +1,1 @@
+define("config",["require","./index"],function(require){return[{path:"/index",action:require("./index")}]});
