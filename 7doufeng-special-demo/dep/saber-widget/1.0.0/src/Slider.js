@@ -44,6 +44,13 @@ define(function (require, exports, module) {
         this.attrs = {
 
             /**
+             * 滚动方向
+             *
+             */
+
+             direction: {value: 'horizon'},
+
+            /**
              * 是否启用切换动画
              *
              * @type {boolean}
@@ -168,7 +175,7 @@ define(function (require, exports, module) {
          * @override
          */
         initEvent: function () {
-            var events = 'release touch dragleft dragright swipeleft swiperight';
+            var events = this.get('direction') == 'horizon'?'release touch dragleft dragright swipeleft swiperight':'release touch dragup dragdown swipeup swipedown';
             var runtime = this.runtime;
 
             runtime.hammer = new Hammer(runtime.wrapper, {dragLockToAxis: true})
@@ -293,6 +300,7 @@ define(function (require, exports, module) {
 
             var runtime = this.runtime;
             var width = runtime.width;
+            var height = runtime.height;
             var index = this.get('index');
             var length = this.get('length');
 
@@ -322,7 +330,24 @@ define(function (require, exports, module) {
                     this._move(dragOffset + paneOffset);
                     break;
 
+                case 'dragup':
+                case 'dragdown':
+                    // stick to the finger
+                    var paneOffset = this._percent(index);
+                    var dragOffset = ((100 / height) * gesture.deltaY) / length;
+
+                    // slow down at the first and last pane
+                    if ((index === 0 && gesture.direction === 'up') ||
+                        (index === length - 1 && gesture.direction === 'down')) {
+                        dragOffset *= 0.4;
+                    }
+
+                    // switch without animate
+                    this._move(dragOffset + paneOffset);
+                    break;
+
                 case 'swipeleft':
+                case 'swipeup':
                     gesture.stopDetect();
 
                     this.next();
@@ -334,6 +359,7 @@ define(function (require, exports, module) {
                     break;
 
                 case 'swiperight':
+                case 'swipedown':
                     gesture.stopDetect();
 
                     this.prev();
@@ -346,12 +372,23 @@ define(function (require, exports, module) {
 
                 case 'release':
                     // 达到切换阀值，则根据滑动方向切换
-                    if (Math.abs(gesture.deltaX) > width * this.get('switchAt')) {
-                        this[ gesture.direction === 'right' ? 'prev' : 'next' ]();
-                    }
-                    // 未达到, 则回弹
-                    else {
-                        this.to(index);
+                    if (this.get('direction') === 'horizon'){
+                        if (Math.abs(gesture.deltaX) > width * this.get('switchAt')) {
+                            this[ gesture.direction === 'right' ? 'prev' : 'next' ]();
+                        }
+                        // 未达到, 则回弹
+                        else {
+                            this.to(index);
+                        }
+
+                    }else{
+                        if (Math.abs(gesture.deltaY) > height * this.get('switchAt')) {
+                            this[ gesture.direction === 'down' ? 'prev' : 'next' ]();
+                        }
+                        // 未达到, 则回弹
+                        else {
+                            this.to(index);
+                        }
                     }
 
                     if (runtime.needResume) {
@@ -390,14 +427,17 @@ define(function (require, exports, module) {
             var runtime = this.runtime;
 
             var oldWidth = runtime.width;
-            var width = styleNumber(this.get('main'));
+            var oldHeight = runtime.height;
+            var width = styleNumber(this.get('main'),'width');
+            var height = styleNumber(this.get('main'),'height');
 
-            if (!isForce && width === oldWidth) {
+            if (!isForce && width === oldWidth && height === oldHeight) {
                 return this;
             }
 
             // 先更新
             runtime.width = width;
+            runtime.height = height;
 
 
             // 重绘计算
@@ -406,9 +446,14 @@ define(function (require, exports, module) {
 
             for (var i = 0; i < length; i++) {
                 styleNumber(items[ i ], 'width', width);
+                styleNumber(items[ i ], 'height', height);
             }
 
-            styleNumber(runtime.wrapper, 'width', width * length);
+            if (this.get('direction') === 'horizon'){
+                styleNumber(runtime.wrapper, 'width', width * length);
+            }else{
+                styleNumber(runtime.wrapper, 'height', height * length);
+            }
 
 
             /**
@@ -467,14 +512,17 @@ define(function (require, exports, module) {
          * @param {number} percent X轴偏移百分比
          * @param {number=} speed 移动速度,单位毫秒
          */
-        _move: function (percent, speed) {
+        _move: function (percent, speed,direction) {
             var wrapper = this.runtime.wrapper;
 
             if (this.get('animate')) {
                 dom.setStyle(wrapper, 'transition', 'all ' + (speed || 0) + 'ms');
             }
-
-            dom.setStyle(wrapper, 'transform', 'translate3d(' + percent + '%, 0, 0) scale3d(1, 1, 1)');
+            if (this.get('direction') === 'horizon') {
+                dom.setStyle(wrapper, 'transform', 'translate3d(' + percent + '%, 0, 0) scale3d(1, 1, 1)');
+            }else{
+                dom.setStyle(wrapper, 'transform', 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)');
+            }
 
             return this;
         },
@@ -647,7 +695,6 @@ define(function (require, exports, module) {
      * @return {number=} 没有传入`val`参数时返回获取到的值，否则返回`undefined`
      */
     function styleNumber(node, name, val) {
-        name = name || 'width';
 
         if (arguments.length > 2) {
             return dom.setStyle(node, name, (parseInt(val, 10) || 0) + 'px');

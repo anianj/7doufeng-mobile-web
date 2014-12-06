@@ -6,6 +6,7 @@
 define(function (require) {
 
     return [
+        {path: '/index', action: require('./index')}
     ];
 
 });
