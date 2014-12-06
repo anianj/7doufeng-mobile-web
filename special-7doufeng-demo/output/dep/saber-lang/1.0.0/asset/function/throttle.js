@@ -1,1 +1,0 @@
-define("saber-lang/function/throttle",[],function(){function e(e,t,n){n=n||{};var r,i,o,s=0,a=function(){s=n.leading===!1?0:Date.now(),e.apply(n.context||r,i)};return function(){r=this,i=arguments;var u=Date.now();if(!s&&n.leading===!1)s=u;var c=t-(u-s);if(0>=c||c>t)o=clearTimeout(o),s=u,e.apply(n.context||r,i);else if(!o&&n.trailing!==!1)o=setTimeout(a,c)}}return e});

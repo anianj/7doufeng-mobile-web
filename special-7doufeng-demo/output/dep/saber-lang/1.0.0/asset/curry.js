@@ -1,1 +1,0 @@
-define("saber-lang/curry",[],function(){function e(e){var t=[].slice.call(arguments,1);return function(){var n=t.concat([].slice.call(arguments));return e.apply(this,n)}}return e});

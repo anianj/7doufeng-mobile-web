@@ -1,1 +1,0 @@
-define("indexView",["require","./index.tpl"],function(require){var e={};return e.template=require("./index.tpl"),e});

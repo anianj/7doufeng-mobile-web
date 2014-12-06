@@ -1,1 +1,0 @@
-define("saber-firework/config",[],{index:"index",path:"/",template:[],viewport:{transition:!1},processor:{transition:!1},timeout:1e3});

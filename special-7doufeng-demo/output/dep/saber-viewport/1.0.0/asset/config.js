@@ -1,1 +1,0 @@
-define("saber-viewport/config",[],{transition:!0,duration:.3,timing:"ease",transform:!0,mask:!0,resetScroll:!0,scrollContainer:document.body});

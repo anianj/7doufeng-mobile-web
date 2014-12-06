@@ -1,1 +1,0 @@
-define("saber-lang/inherits",[],function(){function e(e,t){var n=function(){};n.prototype=t.prototype;var r=e.prototype,i=e.prototype=new n;for(var o in r)i[o]=r[o];return e.prototype.constructor=e,e}return e});

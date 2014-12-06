@@ -1,1 +1,0 @@
-define("saber-string/main",["require","./encodeHTML","./decodeHTML","./format","./camelize","./dasherize"],function(require){return{encodeHTML:require("./encodeHTML"),decodeHTML:require("./decodeHTML"),format:require("./format"),camelize:require("./camelize"),dasherize:require("./dasherize")}}),define("saber-string",["saber-string/main"],function(e){return e});

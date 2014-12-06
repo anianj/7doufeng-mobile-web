@@ -1,1 +1,0 @@
-define("saber-lang/main",["require","./inherits","./extend","./curry","./bind"],function(require){return{inherits:require("./inherits"),extend:require("./extend"),curry:require("./curry"),bind:require("./bind")}}),define("saber-lang",["saber-lang/main"],function(e){return e});

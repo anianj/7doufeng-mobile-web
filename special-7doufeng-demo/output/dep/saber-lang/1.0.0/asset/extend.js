@@ -1,1 +1,0 @@
-define("saber-lang/extend",[],function(){function e(e,t){for(var n=1,r=arguments.length;r>n;n++)if(t=arguments[n]){for(var i in t)if(t.hasOwnProperty(i))e[i]=t[i]}else;return e}return e});
