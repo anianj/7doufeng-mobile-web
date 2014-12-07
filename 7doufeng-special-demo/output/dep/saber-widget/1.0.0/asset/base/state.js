@@ -1,0 +1,1 @@
+define("saber-widget/base/state",["require"],function(){var exports={};return exports.is=function(e){return!!this.states[e]},exports.addState=function(e){this.states[e]=!0},exports.removeState=function(e){delete this.states[e]},exports.toggleState=function(e,t){t="boolean"==typeof t?t:!this.is(e),this[t?"addState":"removeState"](e)},exports});

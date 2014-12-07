@@ -69,7 +69,7 @@ exports.getLocations = function () {
             handler: [
                 file(),
                 // weinre({port: 8889}),
-                livereload(),
+                // livereload(),
                 proxyNoneExists()
             ]
         }

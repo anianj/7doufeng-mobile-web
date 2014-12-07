@@ -1,0 +1,73 @@
+html,body,#viewport,#viewport > div
+    reset-box-model()
+    reset-font()
+    reset-list()
+
+    font-family:'Helvetica Neue', Helvetica, Arial, sans-serif
+    height:100%
+
+
+.slider
+    overflow:hidden;
+    height:100%
+
+.slider .item{
+    position:relative
+}
+
+.slider .item-1
+    background-color:red
+
+.slider .item-1 .gadget-1
+    position:absolute
+    top:40%
+    left:40%
+
+.slider .item-2
+    background-image:url('item-1.png')
+    background-repeat: no-repeat
+
+.slider .item-2 .gadget-1
+    position:absolute
+    top:-1000px
+    left:40px
+    visibility:hidden
+    -webkit-transition:none
+.slider .item-active-2 .gadget-1
+    top:100px
+    visibility:visible
+    -webkit-transition:top 0.7s linear 0.6s
+    -webkit-animation: bounce 0.3s linear 1.3s
+
+.slider .item-2 .gadget-4
+    position:absolute
+    color:white
+    font-size:2rem
+    top:-1000px
+    left:40px
+    width:200px
+    -webkit-transition:none
+.slider .item-active-2 .gadget-4
+    top:220px
+    -webkit-transition:top 0.7s linear 1s
+    -webkit-animation: bounce 0.3s linear 1.7s
+
+.slider .item-3
+    background-color:blue
+
+.slider .item-4
+    background-color:green
+
+
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-10px);
+  }
+  60% {
+    -webkit-transform: translateY(-5px);
+  }
+}

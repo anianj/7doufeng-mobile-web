@@ -1,0 +1,1 @@
+define("indexModel",["require","saber-promise"],function(require){var e=require("saber-promise"),t={};return t.fetch=function(t){return e.resolved(t)},t});

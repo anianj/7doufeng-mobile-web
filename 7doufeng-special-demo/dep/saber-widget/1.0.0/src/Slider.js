@@ -147,6 +147,7 @@ define(function (require, exports, module) {
          */
         type: 'Slider',
 
+
         /**
          * 初始化DOM
          *

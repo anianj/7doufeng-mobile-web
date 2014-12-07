@@ -1,0 +1,1 @@
+define("index",["require","./indexView","./indexModel"],function(require){var e={};return e.view=require("./indexView"),e.model=require("./indexModel"),e});

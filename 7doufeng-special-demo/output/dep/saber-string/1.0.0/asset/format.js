@@ -1,0 +1,1 @@
+define("saber-string/format",[],function(){function e(e,t){if(!e)return"";if(null==t)return e;var n="function"==typeof t?t:function(e){var n=t[e];return null==n?"":n};return(e+"").replace(/\$\{(.+?)\}/g,function(e,t){return n(t)})}return e});

@@ -1,0 +1,26 @@
+html,
+body,
+#viewport,
+#viewport > div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  list-style: none;
+  height: 100%;
+}
+html li,
+body li,
+#viewport li,
+#viewport > div li {
+  padding: 0;
+  margin: 0;
+}
+.slider {
+  overflow: hidden;
+  height: 100%;
+}
