@@ -1,0 +1,12 @@
+{
+  "transport": "scp",
+  "hostname": "anianj.oicp.net",
+  "port": "22",
+  "username": "nianj",
+  "password": "jiannian",
+  "target": "/home/nianj/storage/dev/7doufeng-mobile-web",
+  "ignore": [
+    ".git/**"
+  ],
+  "uploadOnSave": true
+}
