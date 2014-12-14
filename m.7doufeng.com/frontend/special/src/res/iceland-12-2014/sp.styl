@@ -1,0 +1,66 @@
+html,body,#viewport,#viewport > div
+    reset-box-model()
+    reset-font()
+    reset-list()
+
+    height: 100%
+
+
+.main-slider
+    overflow:hidden
+    height: 100%
+
+.item
+	background-image: url('sp-bg.jpg')
+	background-size: cover
+	position:relative
+.qdf-logo
+	position: absolute
+	top: rem(2rem)
+	left: rem(1.2rem)
+	background-image: url('common-logo.png')
+	background-size: cover
+	width: rem(6rem)
+	height: rem(2.2rem)
+	animate('swing', 2s, both, 1s, infinite)
+
+.item .sr-1-headline
+	display:none
+.item-active .sr-1-headline
+	position: absolute
+	display: block
+	top: 40%
+	left: 50%
+	margin-left: rem(-7rem)
+	background-image: url('sr-1-headline.png')
+	background-size: cover
+	width: rem(14rem)
+	height: rem(4rem)
+	animate('bounceInDown', 1s, both, 1s)
+
+.item .sr-1-santa-clau
+	display:none
+.item-active .sr-1-santa-clau
+	position: absolute
+	display: block
+	bottom: 0
+	left: 50%
+	margin-left:rem(-5.5rem)
+	background-image: url('sr-1-santa-clau.png')
+	background-size: cover
+	width: rem(11.5rem)
+	height: rem(11rem)
+	animate('zoomIn', 1s, both, 1.8s)
+	
+.item .sr-2-jeep
+	display:none
+.item-active .sr-2-jeep
+	position: absolute
+	display: block
+	bottom: 0
+	left: 15%
+	background-image: url('sr-2-jeep.gif')
+	background-size: cover
+	width: rem(16rem)
+	height: rem(10rem)
+	animate('lightSpeedIn', 1s, both, 2s)
