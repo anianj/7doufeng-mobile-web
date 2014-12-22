@@ -221,7 +221,7 @@ html,body,#viewport,#viewport > div
 	left: 0
 	right: 0
 	background-image: url('sr-3-ancors-text.gif')
-	background-size: cover
+	background-size: 100% 100%
 	height:50%
 	animate('bounceIn', 0.3s, both, 2.8s)
 	
@@ -233,7 +233,66 @@ html,body,#viewport,#viewport > div
 	bottom: 60%
 	left: 10%
 	background-image: url('sr-3-text.png')
-	background-size: cover
+	background-size: 100% 100%
 	width:rem(9.5rem)
 	height:rem(6rem)
 	animate('fadeInDown', 2s, both, 3s)
+	
+.item .sr-4-headline
+	display:none
+.item-active .sr-4-headline
+	position: absolute
+	display: block
+	top: 30%
+	left: 50%
+	background-image: url('sr-4-headline.png')
+	background-size: cover
+	width: rem(16rem)
+	height: rem(1.6rem)
+	margin-left: rem(-8rem)
+	animate('lightSpeedIn', 1s, both, 0.5s)
+	
+.item .sr-4-aurora
+	display:none
+.item-active .sr-4-aurora
+	position: absolute
+	display: block
+	bottom: 0
+	left: 0
+	right:0
+	background-image: url('sr-4-aurora.jpg')
+	background-size: 100% 100%
+	height: 50%
+	animate('fadeIn', 3s, both, 1s)
+	
+.item .sr-4-btn
+	display:none
+.item-active .sr-4-btn
+	position: absolute
+	display: block
+	bottom: 5%
+	left: 50%
+	background-image: url('sr-4-btn.jpg')
+	background-size: 100% 100%
+	width: rem(10rem)
+	height: rem(2rem)
+	margin-left: rem(-5rem)
+	animate('fadeIn', 3s, both, 1s)
+	
+.masker
+	width: 0%
+	height: 0%
+	position:absolute
+	top:0
+	left:0
+	background-color:#666
+	background-image: url('sr-4-masker-arrow.png')
+	background-repeat:no-repeat
+	background-size:50%
+	background-position:top right
+	opacity:0.5
+	
+	
+.masker-active
+	width: 100%
+	height: 100%

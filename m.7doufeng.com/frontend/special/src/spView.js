@@ -37,6 +37,16 @@ define(function (require) {
         }
     };
 
+    config.domEvents = {
+            'click:.sr-4-btn': function(el,e){
+                var me = this, masker_dom = me.query('.masker');
+                dom_helper.addClass(masker_dom,'masker-active');
+                me.addDomEvent(masker_dom,'click',function(ele,e){
+                    dom_helper.removeClass(masker_dom,'masker-active');
+                    });
+                }
+         };
+
     return config;
 
 });
